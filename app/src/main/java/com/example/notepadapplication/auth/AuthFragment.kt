@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.notepadapplication.R
 import com.example.notepadapplication.widget.base.BaseFragment
@@ -25,27 +24,23 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bottomOpen.setOnClickListener { findNavController().navigate(R.id.generalFragment) }
-        textLady.setOnCheckedChangeListener { _, isChecked -> presenter.showEnabledLady(valid(isChecked)) }
-        textSir.setOnCheckedChangeListener { _, isChecked -> presenter.showEnabledSir(valid(isChecked)) }
+        textLady.setOnCheckedChangeListener { _, isChecked ->
+            presenter.showEnabledLady(valid(isChecked))
+        }
+        textSir.setOnCheckedChangeListener { _, isChecked ->
+            presenter.showEnabledSir(valid(isChecked))
+        }
     }
 
     override fun showEnabledLady(isLady: Boolean) {
         avatarImageView.setImageDrawable(
-            ContextCompat.getDrawable(
-                requireContext(),
-                R.drawable.ic_avatar_sir
-            )
-        )
+            presenter.getImage("isLady", requireContext()))
         textLady.isChecked = isLady
     }
 
     override fun showEnabledSir(isSir: Boolean) {
         avatarImageView.setImageDrawable(
-            ContextCompat.getDrawable(
-                requireContext(),
-                R.drawable.ic_avatar
-            )
-        )
+            presenter.getImage("isSir", requireContext()))
         textSir.isChecked = isSir
     }
 

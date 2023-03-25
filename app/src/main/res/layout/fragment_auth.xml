@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="25dp"
+    android:orientation="vertical"
+    android:background="@drawable/bg_background_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.example.notepadapplication.widget.AvatarImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/bg_circle_gradient_secondary"
+        android:scaleType="fitXY"
+        app:avatar_shape="circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:theme="@style/Theme.NotepadApplication.CheckBoxBold16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/textLady"
+            style="@style/Theme.NotepadApplication.CheckBoxBold16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lady"
+            tools:ignore="HardcodedText" />
+
+        <CheckBox
+            android:id="@+id/textSir"
+            style="@style/Theme.NotepadApplication.CheckBoxBold16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sir"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/firstNameLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="80dp"
+        android:background="@drawable/bg_background_container_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatarImageView">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:background="@android:color/transparent"
+            android:inputType="textPersonName"
+            android:text="Violetta"
+            android:textAppearance="@style/Theme.NotepadApplication.Bold16"
+            android:textColorHint="@color/white"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/secondNameLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="80dp"
+        android:background="@drawable/bg_background_container_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameLay" >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/secondName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:background="@android:color/transparent"
+            android:inputType="textPersonName"
+            android:text="Sagalova"
+            android:textAppearance="@style/Theme.NotepadApplication.Bold16"
+            android:textColorHint="@color/white"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bottomOpen"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="80dp"
+        android:background="@drawable/bg_background_bottom"
+        android:text="Open"
+        android:textAllCaps="false"
+        android:layout_marginTop="30dp"
+        style="@style/Theme.NotepadApplication.Bold16"
+        app:layout_constraintTop_toBottomOf="@+id/secondNameLay"
+        tools:ignore="HardcodedText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

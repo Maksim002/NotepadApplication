@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="25dp"
+    android:paddingVertical="40dp"
     android:orientation="vertical"
     android:background="@drawable/bg_background_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,16 +10,16 @@
 
     <com.example.notepadapplication.widget.AvatarImageView
         android:id="@+id/avatarImageView"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
-        android:layout_marginTop="108dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:background="@drawable/bg_circle_gradient_secondary"
         android:scaleType="fitXY"
+        android:visibility="gone"
         app:avatar_shape="circle"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/secondNameLay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/layout"
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
+        android:visibility="gone"
         android:theme="@style/Theme.NotepadApplication.CheckBoxBold16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -55,12 +56,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="80dp"
+        android:visibility="gone"
         android:background="@drawable/bg_background_container_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatarImageView">
+        app:layout_constraintTop_toBottomOf="@+id/secondNameLay">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/firstName"
@@ -75,26 +77,40 @@
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/titleAuth"
+        style="@style/Theme.NotepadApplication.CheckBoxBold16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/log_text"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/secondNameLay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
         android:id="@+id/secondNameLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="292dp"
         android:background="@drawable/bg_background_container_white"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameLay" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/secondName"
+            android:id="@+id/phoneName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:background="@android:color/transparent"
-            android:inputType="textPersonName"
-            android:text="Sagalova"
+            android:inputType="number"
+            android:text="+996553071675"
             android:textAppearance="@style/Theme.NotepadApplication.Bold16"
             android:textColorHint="@color/white"
             tools:ignore="HardcodedText" />
@@ -106,10 +122,21 @@
         android:layout_height="55dp"
         android:layout_marginHorizontal="80dp"
         android:background="@drawable/bg_background_bottom"
-        android:text="Open"
+        android:text="@string/entrance_text"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
         style="@style/Theme.NotepadApplication.Bold16"
-        app:layout_constraintTop_toBottomOf="@+id/secondNameLay"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameLay"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/typeText"
+        style="@style/Theme.NotepadApplication.Bold16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/authorization_text"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -126,6 +126,7 @@
             android:background="@android:color/transparent"
             android:inputType="phone"
             android:hint="Phone Number"
+            android:text="+996553071675"
             android:digits="+() 1234567890-"
             android:maxLength="13"
             android:textAppearance="@style/Theme.NotepadApplication.Bold16"

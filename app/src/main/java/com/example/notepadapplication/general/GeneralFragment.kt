@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.notepadapplication.R
+import com.example.notepadapplication.general.adapter.GeneralAdapter
 import kotlinx.android.synthetic.main.fragment_general.*
 
 class GeneralFragment : Fragment() {
+
+    private var adapters = GeneralAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,5 +25,24 @@ class GeneralFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         backImageView.setOnClickListener { findNavController().popBackStack() }
+        initAdapter()
+    }
+
+    private fun initAdapter() {
+        val list: ArrayList<String> = arrayListOf()
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        list.add("")
+        adapters.update(list)
+        recyclerView.adapter = adapters
     }
 }

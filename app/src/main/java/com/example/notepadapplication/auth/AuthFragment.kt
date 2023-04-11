@@ -4,19 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.example.notepadapplication.R
 import com.example.notepadapplication.widget.base.BaseFragment
 import com.example.notepadapplication.widget.model.User
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_auth.*
 
 class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), AuthContract.View {
 
     override val presenter: AuthContract.Presenter = AuthPresenter()
-
-    private var dbRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("User")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,9 +26,12 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         bottomOpen.setOnClickListener {
-            dbRef.child(phoneName.text.toString()).setValue(User(firstName.text.toString(), true))
+            presenter.registrationLogo(
+                phoneName.text.toString(),
+                firstName.text.toString(),
+                bottomOpen.text.toString()
+            )
         }
         textLady.setOnCheckedChangeListener { _, isChecked ->
             presenter.showEnabledLady(valid(isChecked))
@@ -39,6 +40,7 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
             presenter.showEnabledSir(valid(isChecked))
         }
         typeText.setOnClickListener { presenter.typeOpen(typeText.text.toString()) }
+        textLady.isChecked = true
     }
 
     override fun showEnabledLady(isLady: Boolean) {
@@ -64,7 +66,11 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
         else textInput(R.string.save_text, R.string.registration_text)
     }
 
-    private fun textInput(open: Int, type: Int){
+    override fun showGetWork() {
+        findNavController().navigate(R.id.generalFragment)
+    }
+
+    private fun textInput(open: Int, type: Int) {
         bottomOpen.text = getString(open)
         typeText.text = getString(type)
     }
@@ -79,6 +85,7 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
     }
 
     override fun showErrorMessage(e: Throwable?, dismissCallback: (() -> Unit)?) {}
-
-    override fun showErrorMessage(messageRes: Int) {}
+    override fun showErrorMessage(messageRes: Int) {
+        Toast.makeText(requireContext(), resources.getString(messageRes), Toast.LENGTH_SHORT).show()
+    }
 }

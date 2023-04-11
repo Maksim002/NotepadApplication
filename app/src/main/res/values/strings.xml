@@ -7,4 +7,6 @@
     <string name="save_text">Save</string>
     <string name="entrance_text">Open</string>
     <string name="log_text">Log in</string>
+    <string name="user_exists">Such a user already exists</string>
+    <string name="invalid_password">Invalid username or password</string>
 </resources>

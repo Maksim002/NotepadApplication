@@ -13,6 +13,7 @@ interface AuthContract {
         fun showEnabledSir(isSir: Boolean)
         fun showEnabledClear()
         fun showInputVisibility(isVisibility: Boolean)
+        fun showGetWork()
     }
 
     interface Presenter : MvpPresenter<View>{
@@ -20,5 +21,6 @@ interface AuthContract {
         fun showEnabledSir(isSir: Boolean)
         fun getImage(type: String, context: Context): Drawable
         fun typeOpen(type: String)
+        fun registrationLogo(phone: String, name: String, type: String)
     }
 }

@@ -2,6 +2,7 @@ package com.example.notepadapplication.auth
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import androidx.annotation.StringRes
 import com.example.notepadapplication.widget.base.MvpPresenter
 import com.example.notepadapplication.widget.base.MvpView
 import com.example.notepadapplication.widget.model.OpenType
@@ -14,6 +15,7 @@ interface AuthContract {
         fun showEnabledClear()
         fun showInputVisibility(isVisibility: Boolean)
         fun showGetWork()
+        fun showErrorRegistration(@StringRes messageRes: Int? = 0, visibility: Boolean)
     }
 
     interface Presenter : MvpPresenter<View>{
@@ -22,5 +24,6 @@ interface AuthContract {
         fun getImage(type: String, context: Context): Drawable
         fun typeOpen(type: String)
         fun registrationLogo(phone: String, name: String, type: String)
+        fun showPhone()
     }
 }

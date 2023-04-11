@@ -16,8 +16,8 @@
         android:scaleType="fitXY"
         android:visibility="gone"
         app:avatar_shape="circle"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/secondNameLay"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/thereUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -71,9 +71,8 @@
             android:layout_marginHorizontal="16dp"
             android:background="@android:color/transparent"
             android:inputType="textPersonName"
-            android:text="Violetta"
+            android:hint="User Name"
             android:textAppearance="@style/Theme.NotepadApplication.Bold16"
-            android:textColorHint="@color/white"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
@@ -85,7 +84,23 @@
         android:text="@string/log_text"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/thereUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/thereUser"
+        style="@style/Theme.NotepadApplication.CheckBoxBold16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/there_user_text"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/secondNameLay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -103,16 +118,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:background="@android:color/transparent"
-            android:inputType="number"
-            android:text="+996553071675"
+            android:inputType="phone"
+            android:hint="Phone Number"
+            android:digits="+() 1234567890-"
+            android:maxLength="13"
             android:textAppearance="@style/Theme.NotepadApplication.Bold16"
-            android:textColorHint="@color/white"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 

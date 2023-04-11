@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.example.notepadapplication.R
 import com.example.notepadapplication.widget.base.BaseFragment
@@ -39,6 +41,7 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
         textSir.setOnCheckedChangeListener { _, isChecked ->
             presenter.showEnabledSir(valid(isChecked))
         }
+        phoneName.addTextChangedListener { presenter.showPhone() }
         typeText.setOnClickListener { presenter.typeOpen(typeText.text.toString()) }
         textLady.isChecked = true
     }
@@ -62,12 +65,18 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
         avatarImageView.isVisible = isVisibility
         firstNameLay.isVisible = isVisibility
         titleAuth.isVisible = !isVisibility
+        thereUser.isVisible = false
         if (!isVisibility) textInput(R.string.entrance_text, R.string.authorization_text)
         else textInput(R.string.save_text, R.string.registration_text)
     }
 
     override fun showGetWork() {
         findNavController().navigate(R.id.generalFragment)
+    }
+
+    override fun showErrorRegistration(messageRes: Int?, visibility: Boolean) {
+        if (messageRes != 0) thereUser.text = resources.getString(messageRes!!)
+        thereUser.isVisible = visibility
     }
 
     private fun textInput(open: Int, type: Int) {

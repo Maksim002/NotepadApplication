@@ -14,7 +14,7 @@ interface AuthContract {
         fun showEnabledSir(isSir: Boolean)
         fun showEnabledClear()
         fun showInputVisibility(isVisibility: Boolean)
-        fun showGetWork()
+        fun showGetWork(phone: String)
         fun showErrorRegistration(@StringRes messageRes: Int? = 0, visibility: Boolean)
     }
 

@@ -57,7 +57,7 @@ class AuthPresenter : BasePresenter<AuthContract.View>(), AuthContract.Presenter
     override fun registrationLogo(phone: String, name: String, type: String) {
         if (type == "Open") {
             if (numberValidation(phone))
-            if (phoneUser.firstOrNull { phone == it } != null) view?.showGetWork()
+            if (phoneUser.firstOrNull { phone == it } != null) view?.showGetWork(phone)
             else view?.showErrorRegistration(R.string.there_user_text, true)
         } else {
             if (numberValidation(phone) && name != "") {

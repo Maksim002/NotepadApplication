@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.example.notepadapplication.R
 import com.example.notepadapplication.widget.base.BaseFragment
-import com.example.notepadapplication.widget.model.User
 import kotlinx.android.synthetic.main.fragment_auth.*
 
 class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), AuthContract.View {
@@ -70,8 +68,10 @@ class AuthFragment : BaseFragment<AuthContract.View, AuthContract.Presenter>(), 
         else textInput(R.string.save_text, R.string.registration_text)
     }
 
-    override fun showGetWork() {
-        findNavController().navigate(R.id.generalFragment)
+    override fun showGetWork(phone: String) {
+        val bundle = Bundle()
+        bundle.putString("phone", phone)
+        findNavController().navigate(R.id.generalFragment, bundle)
     }
 
     override fun showErrorRegistration(messageRes: Int?, visibility: Boolean) {
